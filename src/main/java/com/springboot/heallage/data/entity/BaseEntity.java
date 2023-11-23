@@ -1,4 +1,4 @@
-package com.springboot.heallage.domain.entity;
+package com.springboot.heallage.data.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.MappedSuperclass;
