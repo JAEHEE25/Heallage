@@ -1,8 +1,8 @@
 package com.springboot.heallage.data.entity;
 
-import com.springboot.heallage.data.dto.post.PostRequestDto;
 import jakarta.persistence.*;
 import lombok.Builder;
+import lombok.Getter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.util.ArrayList;
@@ -10,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Builder
+@Getter
 public class Post extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
