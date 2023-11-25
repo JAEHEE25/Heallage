@@ -1,9 +1,6 @@
 package com.springboot.heallage.data.entity;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.MappedSuperclass;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 

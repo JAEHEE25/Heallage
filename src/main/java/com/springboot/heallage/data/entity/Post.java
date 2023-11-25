@@ -17,15 +17,15 @@ public class Post extends BaseEntity {
     @Column(name = "postId")
     private Long id;
 
-    @ManyToOne(optional = false)
+    @ManyToOne()  //optional == false
     @JoinColumn(name = "userId")
     private User user;
 
-    @ManyToOne(optional = false)
+    @ManyToOne()  //optional == false
     @JoinColumn(name = "categoryId")
     private Category category;
 
-    @ManyToOne(optional = false)
+    @ManyToOne()
     @JoinColumn(name = "bookmarkStorageId")
     private BookmarkStorage bookmarkStorage;
 
@@ -46,15 +46,12 @@ public class Post extends BaseEntity {
     @Column(nullable = false, columnDefinition = "tinyint(1) default 0")
     private boolean isDeleted;
 
-    @ColumnDefault("0")
     @Column(nullable = false)
     private Integer views;
 
-    @ColumnDefault("0")
     @Column(nullable = false)
     private Integer bookmarkCount;
 
-    @ColumnDefault("0")
     @Column(nullable = false)
     private Integer reactionCount;
 }
