@@ -3,6 +3,7 @@ package com.springboot.heallage.controller;
 import com.springboot.heallage.data.constants.ResponseMessage;
 import com.springboot.heallage.data.dto.BaseResponse;
 import com.springboot.heallage.data.dto.post.PostRequestDto;
+import com.springboot.heallage.data.dto.post.PostResponseDto;
 import com.springboot.heallage.sevice.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +19,8 @@ public class PostController {
 
     @PostMapping
     public ResponseEntity<BaseResponse> createPost(PostRequestDto postRequestDto) {
-        Long responseBody = postService.savePost(postRequestDto);
-        BaseResponse response = BaseResponse.buildResponse(ResponseMessage.POST_SAVE.getMessage(), responseBody);
+        PostResponseDto responseBody = postService.savePost(postRequestDto);
+        BaseResponse response = BaseResponse.of(ResponseMessage.POST_SAVE.getMessage(), responseBody);
         return ResponseEntity.status(ResponseMessage.POST_SAVE.getCode()).body(response);
     }
 }
