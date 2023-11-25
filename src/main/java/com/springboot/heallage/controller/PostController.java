@@ -7,6 +7,7 @@ import com.springboot.heallage.data.dto.post.PostResponseDto;
 import com.springboot.heallage.sevice.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,7 @@ public class PostController {
 
     @PostMapping
     public ResponseEntity<BaseResponse> createPost(PostRequestDto postRequestDto) {
-        PostResponseDto responseBody = postService.savePost(postRequestDto);
+        Long responseBody = postService.savePost(postRequestDto);
         BaseResponse response = BaseResponse.of(ResponseMessage.POST_SAVE.getMessage(), responseBody);
         return ResponseEntity.status(ResponseMessage.POST_SAVE.getCode()).body(response);
     }

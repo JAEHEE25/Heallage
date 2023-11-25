@@ -14,9 +14,9 @@ public class PostService {
 
     private final PostRepository postRepository;
 
-    public PostResponseDto savePost(PostRequestDto postRequestDto) {
+    public Long savePost(PostRequestDto postRequestDto) {
         Post newPost = postRequestDto.toEntity(postRequestDto);
         Post savedPost = postRepository.save(newPost);
-        return PostResponseDto.from(savedPost);
+        return savedPost.getId();
     }
 }
