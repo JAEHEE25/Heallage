@@ -1,6 +1,7 @@
 package com.springboot.heallage.sevice;
 
 import com.springboot.heallage.domain.constants.ExceptionCode;
+import com.springboot.heallage.domain.dto.post.PostListDto;
 import com.springboot.heallage.domain.dto.post.PostRequestDto;
 import com.springboot.heallage.domain.dto.post.PostResponseDto;
 import com.springboot.heallage.domain.entity.Post;
@@ -8,6 +9,8 @@ import com.springboot.heallage.domain.exception.CustomException;
 import com.springboot.heallage.domain.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -26,5 +29,10 @@ public class PostService {
                 () -> new CustomException(ExceptionCode.POST_NOT_FOUND)
         );
         return PostResponseDto.from(foundPost);
+    }
+
+    public List<PostListDto> getAllPosts() {
+        List<Post> foundPosts = postRepository.findAll();
+        return PostListDto.from(foundPosts);
     }
 }
