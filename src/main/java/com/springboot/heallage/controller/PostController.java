@@ -1,27 +1,31 @@
 package com.springboot.heallage.controller;
 
-import com.springboot.heallage.data.constants.ResponseMessage;
-import com.springboot.heallage.data.dto.BaseResponse;
-import com.springboot.heallage.data.dto.post.PostRequestDto;
-import com.springboot.heallage.data.dto.post.PostResponseDto;
+import com.springboot.heallage.domain.constants.ResponseCode;
+import com.springboot.heallage.domain.response.BaseResponse;
+import com.springboot.heallage.domain.dto.post.PostRequestDto;
+import com.springboot.heallage.domain.dto.post.PostResponseDto;
 import com.springboot.heallage.sevice.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "api/v1/post")
 @RequiredArgsConstructor
+@RequestMapping(value = "api/v1/post")
 public class PostController {
     private final PostService postService;
 
     @PostMapping
     public ResponseEntity<BaseResponse> createPost(PostRequestDto postRequestDto) {
         Long responseBody = postService.savePost(postRequestDto);
-        BaseResponse response = BaseResponse.of(ResponseMessage.POST_SAVE.getMessage(), responseBody);
-        return ResponseEntity.status(ResponseMessage.POST_SAVE.getCode()).body(response);
+        BaseResponse response = BaseResponse.of(ResponseCode.POST_SAVE, responseBody);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<BaseResponse> getPost(@PathVariable(value = "id") Long id) {
+        PostResponseDto responseBody = postService.getPost(id);
+        BaseResponse response = BaseResponse.of(ResponseCode.POST_GET, responseBody);
+        return ResponseEntity.ok(response);
     }
 }

@@ -1,9 +1,7 @@
-package com.springboot.heallage.data.entity;
+package com.springboot.heallage.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import org.hibernate.annotations.ColumnDefault;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +9,8 @@ import java.util.List;
 @Entity
 @Builder
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Post extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
