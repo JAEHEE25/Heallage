@@ -1,6 +1,6 @@
-package com.springboot.heallage.data.dto.post;
+package com.springboot.heallage.domain.dto.post;
 
-import com.springboot.heallage.data.entity.*;
+import com.springboot.heallage.domain.entity.*;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -9,7 +9,6 @@ import java.util.List;
 @Getter
 @Builder
 public class PostRequestDto {
-    private Category category;
     private String title;
     private String content;
     private List<PostImage> postImages;
@@ -17,7 +16,6 @@ public class PostRequestDto {
 
     public Post toEntity(PostRequestDto postRequestDto) {
         return Post.builder()
-                .category(postRequestDto.getCategory())
                 .title(postRequestDto.getTitle())
                 .content(postRequestDto.getContent())
                 .postImages(postRequestDto.getPostImages())

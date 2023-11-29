@@ -1,6 +1,6 @@
-package com.springboot.heallage.data.dto.post;
+package com.springboot.heallage.domain.dto.post;
 
-import com.springboot.heallage.data.entity.*;
+import com.springboot.heallage.domain.entity.*;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -9,7 +9,6 @@ import java.util.List;
 @Getter
 @Builder
 public class PostResponseDto {
-    private Category category;
     private String title;
     private String content;
     private String nickname;
@@ -23,7 +22,6 @@ public class PostResponseDto {
 
     public static PostResponseDto from(Post savedPost) {
         return PostResponseDto.builder()
-                .category(savedPost.getCategory())
                 .title(savedPost.getTitle())
                 .content(savedPost.getContent())
                 .nickname("")  //savedPost.getUser().getNickname()

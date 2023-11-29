@@ -1,4 +1,4 @@
-package com.springboot.heallage.data.entity;
+package com.springboot.heallage.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
