@@ -21,10 +21,6 @@ public class Post extends BaseEntity {
     @JoinColumn(name = "userId")
     private User user;
 
-    @ManyToOne()  //optional == false
-    @JoinColumn(name = "categoryId")
-    private Category category;
-
     @ManyToOne()
     @JoinColumn(name = "bookmarkStorageId")
     private BookmarkStorage bookmarkStorage;
